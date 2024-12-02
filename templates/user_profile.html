@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>User Profile</h2>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <td>{{ user.name }}</td>
+    </tr>
+    <tr>
+        <th>Date of Birth</th>
+        <td>{{ user.dob }}</td>
+    </tr>
+    <tr>
+        <th>Profile Picture</th>
+        <td><img src="{{ user.profile_picture_url }}" alt="Profile Picture" style="width: 100px;"></td>
+    </tr>
+    <tr>
+        <th>ID Document</th>
+        <td>
+            {% if id_document_url %}
+                <a href="{{ id_document_url }}" download>Download uploaded file {{ id_document_url.split('/')[-1] }}</a>
+            {% else %}
+                <p>No ID document uploaded.</p>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+<a href="{{ url_for('edit_profile') }}" class="btn btn-warning">Edit Profile</a>
+<form method="POST" action="{{ url_for('delete_user') }}" class="mt-3">
+    <button type="submit" class="btn btn-danger">Delete Account</button>
+</form>
+{% endblock %}
