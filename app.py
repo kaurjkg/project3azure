@@ -14,21 +14,21 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
 # SQL Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://project3jkgserveradmin:Jaspreet%401998@project3jkgserver.database.windows.net/dbuser?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=yes&TrustServerCertificate=no&ConnectionTimeout=30'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://kaurjkg-server-admin:Jaspreet%401998@kaurjkg-server.database.windows.net/kaurjkg-database?driver=ODBC+Driver+18+for+SQL+Server&Encrypt=yes&TrustServerCertificate=no&ConnectionTimeout=30'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Azure Configuration
 DATABASE_CONFIG = {
-    'server': 'project3jkgserver.database.windows.net',
-    'database': 'dbuser',
-    'username': 'project3jkgserveradmin',
+    'server': 'kaurjkg-server.database.windows.net',
+    'database': 'kaurjkg-database',
+    'username': 'kaurjkg-server-admin',
     'password': 'Jaspreet@1998',
     'driver': '{ODBC Driver 18 for SQL Server}'
 }
-BLOB_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=project3kg;AccountKey=s+3v92URuio/ofGCroaPL3yW6w1GKikgqc1csBJArtHIkDYQhGvV4SAlWqcul/HRfIBBB03R0ezT+AStwhmyqg==;EndpointSuffix=core.windows.net"
+BLOB_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=project4sa;AccountKey=PBjM7/ByebZK9SwIBYfo9mbUP4Yy1k9mGR1TukPVe/vQMOEd6qXJHeCm6Nkc0jlZB+luDkBH4Iwi+AStriBkOQ==;EndpointSuffix=core.windows.net"
 BLOB_CONTAINER_NAME = "usercontainer"
-FILE_SHARE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=project3kg;AccountKey=s+3v92URuio/ofGCroaPL3yW6w1GKikgqc1csBJArtHIkDYQhGvV4SAlWqcul/HRfIBBB03R0ezT+AStwhmyqg==;EndpointSuffix=core.windows.net"
-FILE_SHARE_NAME = "userfileshare1"
+FILE_SHARE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=project4sa;AccountKey=PBjM7/ByebZK9SwIBYfo9mbUP4Yy1k9mGR1TukPVe/vQMOEd6qXJHeCm6Nkc0jlZB+luDkBH4Iwi+AStriBkOQ==;EndpointSuffix=core.windows.net"
+FILE_SHARE_NAME = "userfileshare"
 
 # Initialize Azure services
 blob_service_client = BlobServiceClient.from_connection_string(BLOB_STORAGE_CONNECTION_STRING)
