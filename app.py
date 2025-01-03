@@ -105,7 +105,7 @@ def register():
             directory_client = file_service_client.get_share_client(FILE_SHARE_NAME).get_directory_client("")
             file_client = directory_client.get_file_client(unique_filename)  # Correct method to get the file client
             file_client.upload_file(id_document)  # Upload the ID document
-            new_user.id_document_path = f"https://{file_service_client.account_name}.file.core.windows.net/{FILE_SHARE_NAME}/{unique_filename}"
+            new_user.id_document_path = f"https://{file_service_client.account_name}.file.core.windows.net/{FILE_SHARE_NAME}//{unique_filename}"
 
         # Add the new user to the database
         db.session.add(new_user)
@@ -173,7 +173,7 @@ def edit_profile():
             directory_client = file_service_client.get_share_client(FILE_SHARE_NAME).get_directory_client("")
             file_client = directory_client.get_file_client(unique_filename)  # Correct method to get the file client
             file_client.upload_file(id_document)
-            current_user.id_document_path = f"https://{file_service_client.account_name}.file.core.windows.net/{FILE_SHARE_NAME}/{unique_filename}"
+            current_user.id_document_path = f"https://{file_service_client.account_name}.file.core.windows.net/{FILE_SHARE_NAME}//{unique_filename}"
 
         db.session.commit()
         flash('Profile updated successfully!', 'success')
